@@ -41,6 +41,7 @@ const CreateBlog = ({ userEmail }) => {
         date,
       });
       setLoading(false);
+      window.location.reload()
     }
   };
 
@@ -106,14 +107,14 @@ const CreateBlog = ({ userEmail }) => {
             />
           </div>
           {loading ? (
-            <p className="text-center text-white">
-              please wait! uploading image takes longer than usual, thank you for patience.
+            <p className="text-center text-white mt-3">
+              please wait! Uploading image takes longer than usual. Thank you for your patience.
             </p>
           ) : (
             <button
               type="submit"
               className="btn bg-white uppercase w-full py-3 mt-2 text-[#000944] rounded-md "
-            ></button>
+            >Submit</button>
           )}
         </form>
       </div>

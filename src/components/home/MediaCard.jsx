@@ -20,7 +20,7 @@ const MediaCard = ({blog, userEmail}) => {
     >
       <img className="h-2/4 w-full" src={blog?.imagePath} alt="" />
       <h2 className="text-2xl my-4 mx-3 text-white">{blog?.title}</h2>
-      <p className="text-md mx-3 text-justify">{blog?.blog}</p>
+      <p className="text-md mx-3 text-justify">{blog?.blog?.slice(0, 200) + `...`}</p>
 
       <button
         onClick={()=>handleNavigate(blog?._id)}
