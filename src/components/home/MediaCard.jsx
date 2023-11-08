@@ -18,12 +18,12 @@ const MediaCard = ({blog, userEmail}) => {
       data-aos-duration="1000"
       className="bg-[#222222] text-white group w-full h-[650px] overflow-hidden relative shadow-2xl"
     >
-      <img className="h-2/4 w-full" src={blog?.img} alt="" />
+      <img className="h-2/4 w-full" src={blog?.imagePath} alt="" />
       <h2 className="text-2xl my-4 mx-3 text-white">{blog?.title}</h2>
-      <p className="text-md mx-3 text-justify">{blog?.description}</p>
+      <p className="text-md mx-3 text-justify">{blog?.blog}</p>
 
       <button
-        onClick={()=>handleNavigate(105)}
+        onClick={()=>handleNavigate(blog?._id)}
         target="_blank"
         className="absolute btn bg-white text-black xl:px-5 lg:px-5 md:px-4 sm:px-4 xs:px-3 xxs:px-3 xl:py-3 lg:py-3 md:py-2 sm:py-2 xs:py-1 xxs:py-1 rounded-md bottom-5 left-3"
       >

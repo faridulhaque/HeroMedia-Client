@@ -17,7 +17,6 @@ const Navbar = ({ userEmail }) => {
   const location = useLocation()
   const {pathname} = location
 
-  console.log(userEmail)
 
   return (
     <div className={`navbar ${pathname === "/" ? "bg-base-0" : "bg-black"} absolute z-10 top-0`}>

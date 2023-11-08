@@ -1,32 +1,48 @@
 import React, { useState } from "react";
 import { useSaveBlogPostMutation } from "../../api/queries/blogPost";
 
-const CreateBlog = ({userEmail}) => {
-
+const CreateBlog = ({ userEmail }) => {
+  const [loading, setLoading] = useState(false);
   const [saveBlogPost] = useSaveBlogPostMutation();
 
   const [imgFile, setImgFile] = useState(null);
 
-  const handleSubmit = (e) =>{
+  const uploadImage = async (file) => {
+    setLoading(true);
+    const response = await fetch(
+      "https://api.cloudinary.com/v1_1/dfmdacf6w/image/upload",
+      {
+        method: "POST",
+        body: file,
+      }
+    );
+    const data = await response.json();
 
+    return data;
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const title = e.target.title.value;
     const blog = e.target.blog.value;
-    
+    const date = new Date();
+    const file = new FormData();
 
-    // Use FormData to handle file upload
-    const formData = new FormData();
-    formData.append('file', imgFile);
+    file.append("file", imgFile);
+    file.append("upload_preset", "heroclub");
+    const pictureInfo = await uploadImage(file);
 
-    const body = {
-      title, blog, formData, userEmail
+    if (pictureInfo?.secure_url) {
+      await saveBlogPost({
+        imagePath: pictureInfo?.secure_url,
+        title,
+        blog,
+        date,
+      });
+      setLoading(false);
     }
-    const result = saveBlogPost(body)
-
-  }
-
-
+  };
 
   return (
     <div
@@ -50,7 +66,7 @@ const CreateBlog = ({userEmail}) => {
               </label>
               <br />
               <input
-                className="w-full h-14 mt-2 outline-none border-none rounded-md bg-white"
+                className="w-full h-14 mt-2 outline-none border-none rounded-md bg-white text-black"
                 type="text"
                 name="title"
                 id="name"
@@ -70,7 +86,7 @@ const CreateBlog = ({userEmail}) => {
                 id="file"
                 name="file"
                 placeholder="Upload an image"
-                onChange={(e)=>setImgFile(e.target.files[0])}
+                onChange={(e) => setImgFile(e.target.files[0])}
               />
             </div>
           </div>
@@ -89,12 +105,16 @@ const CreateBlog = ({userEmail}) => {
               className="w-full resize-none h-[150px] mt-2 outline-none border-none rounded-md bg-white text-black"
             />
           </div>
-          <button
-            type="submit"
-            className="btn bg-white uppercase w-full py-3 mt-2 text-[#000944] rounded-md "
-          >
-            Submit
-          </button>
+          {loading ? (
+            <p className="text-center text-white">
+              please wait! uploading image takes longer than usual, thank you for patience.
+            </p>
+          ) : (
+            <button
+              type="submit"
+              className="btn bg-white uppercase w-full py-3 mt-2 text-[#000944] rounded-md "
+            ></button>
+          )}
         </form>
       </div>
     </div>

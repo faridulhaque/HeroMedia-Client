@@ -11,6 +11,15 @@ const blogPostApi = apiSlice.injectEndpoints({
           body: data,
         }),
       }),
+
+
+      getAllBlogs: builder.query({
+        query: () => ({
+          url: `/api/blogPost/all`,
+          method: "GET",
+        }),
+        providesTags: ["blog"],
+      }),
   
 
 
@@ -18,4 +27,4 @@ const blogPostApi = apiSlice.injectEndpoints({
   });
 
 
-export const {useSaveBlogPostMutation} = blogPostApi; 
+export const {useSaveBlogPostMutation, useGetAllBlogsQuery} = blogPostApi; 

@@ -1,8 +1,30 @@
 import React from "react";
+import { useUpdateUserProfileMutation } from "../../api/queries/aboutApi";
 
-const UpdateProfile = ({setEdit, profileData}) => {
-  const handleSubmit = (event) => {
-    event.preventDefault();
+const UpdateProfile = ({ setEdit, profileData }) => {
+  const [updateProfile] = useUpdateUserProfileMutation()
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const info = {
+      displayName: e.target.displayName.value,
+      email: profileData?.email,
+      phone: e.target.phone.value,
+      address: e.target.address.value,
+      secondarySchool: e.target.secondarySchool.value,
+      highSchool: e.target.highSchool.value,
+      college: e.target.college.value,
+      varsity: e.target.varsity.value,
+      workplace: e.target.workplace.value,
+    };
+
+    const response = await updateProfile(info);
+
+    if(response?.data?.acknowledged){
+      setEdit(false)
+    }
+
   };
   return (
     <form
@@ -17,7 +39,7 @@ const UpdateProfile = ({setEdit, profileData}) => {
         <input
           required
           type="text"
-            defaultValue={profileData?.displayName}
+          defaultValue={profileData?.displayName}
           className="input input-bordered"
           name="displayName"
         />
@@ -28,7 +50,7 @@ const UpdateProfile = ({setEdit, profileData}) => {
         </label>
         <input
           type="text"
-            defaultValue={profileData?.email}
+          defaultValue={profileData?.email}
           disabled
           className="input input-bordered"
           name="email"
@@ -40,7 +62,7 @@ const UpdateProfile = ({setEdit, profileData}) => {
         </label>
         <input
           type="text"
-            defaultValue={profileData?.phone}
+          defaultValue={profileData?.phone}
           className="input input-bordered"
           name="phone"
         />
@@ -58,7 +80,7 @@ const UpdateProfile = ({setEdit, profileData}) => {
           <span className="label-text">Full Address</span>
         </label>
         <textarea
-            defaultValue={profileData?.address}
+          defaultValue={profileData?.address}
           className="input input-bordered"
           name="address"
         />
@@ -70,7 +92,7 @@ const UpdateProfile = ({setEdit, profileData}) => {
         </label>
         <input
           type="text"
-            defaultValue={profileData?.secondarySchool}
+          defaultValue={profileData?.secondarySchool}
           className="input input-bordered"
           name="secondarySchool"
         />
@@ -82,7 +104,7 @@ const UpdateProfile = ({setEdit, profileData}) => {
         </label>
         <input
           type="text"
-            defaultValue={profileData?.highSchool}
+          defaultValue={profileData?.highSchool}
           className="input input-bordered"
           name="highSchool"
         />
@@ -94,7 +116,7 @@ const UpdateProfile = ({setEdit, profileData}) => {
         </label>
         <input
           type="text"
-            defaultValue={profileData?.college}
+          defaultValue={profileData?.college}
           className="input input-bordered"
           name="college"
         />
@@ -106,7 +128,7 @@ const UpdateProfile = ({setEdit, profileData}) => {
         </label>
         <input
           type="text"
-            defaultValue={profileData?.varsity}
+          defaultValue={profileData?.varsity}
           className="input input-bordered"
           name="varsity"
         />
@@ -118,7 +140,7 @@ const UpdateProfile = ({setEdit, profileData}) => {
         </label>
         <input
           type="text"
-            defaultValue={profileData?.workplace}
+          defaultValue={profileData?.workplace}
           className="input input-bordered"
           name="workplace"
         />
