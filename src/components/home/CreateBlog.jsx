@@ -6,6 +6,7 @@ const CreateBlog = ({ userEmail }) => {
   const [saveBlogPost] = useSaveBlogPostMutation();
 
   const [imgFile, setImgFile] = useState(null);
+  const [error, setError] = useState(false);
 
   const uploadImage = async (file) => {
     setLoading(true);
@@ -24,13 +25,16 @@ const CreateBlog = ({ userEmail }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!userEmail) {
+      setError(true);
+    }
+
     const title = e.target.title.value;
     const blog = e.target.blog.value;
     const date = new Date();
     const file = new FormData();
     const likes = [];
     const comments = [];
-    
 
     file.append("file", imgFile);
     file.append("upload_preset", "heroclub");
@@ -44,10 +48,10 @@ const CreateBlog = ({ userEmail }) => {
         date,
         likes,
         comments,
-        userEmail
+        userEmail,
       });
       setLoading(false);
-      window.location.reload()
+      window.location.reload();
     }
   };
 
@@ -60,6 +64,15 @@ const CreateBlog = ({ userEmail }) => {
       <p className="text-xl text-center">
         Dive into your Journey of Expression and Innovation.
       </p>
+      {!userEmail && (
+        <p className="text-md text-center mt-3 text-red-500">
+          You must sign in to create a post. Please{" "}
+          <span className="text-blue-500 cursor-pointer" 
+          onClick={()=>document.getElementById("entry_modal").showModal()}
+          >sign in</span> before you start.
+        </p>
+      )}
+
       <div className="mx-auto w-11/12 lg:flex sm:block items-center">
         <form
           onSubmit={handleSubmit}
@@ -79,6 +92,7 @@ const CreateBlog = ({ userEmail }) => {
                 id="name"
                 required
                 placeholder="Add a title"
+                
               />
             </div>
             <div>
@@ -114,13 +128,16 @@ const CreateBlog = ({ userEmail }) => {
           </div>
           {loading ? (
             <p className="text-center text-white mt-3">
-              please wait! Uploading image takes longer than usual. Thank you for your patience.
+              please wait! Uploading image takes longer than usual. Thank you
+              for your patience.
             </p>
           ) : (
             <button
               type="submit"
               className="btn bg-white uppercase w-full py-3 mt-2 text-[#000944] rounded-md "
-            >Submit</button>
+            >
+              Submit
+            </button>
           )}
         </form>
       </div>
