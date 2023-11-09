@@ -9,7 +9,7 @@ const MediaFrame = ({ blog }) => {
   );
 
   return (
-    <div className="card lg:card-side bg-base-200 shadow-xl lg:w-2/4 sm:11/12 mx-auto my-5">
+    <div className="card lg:card-side bg-base-200 shadow-xl lg:w-2/4 sm:11/12 mx-auto my-5 lg:h-[300px] sm:h-[600px]">
       <figure className="lg:w-2/4 sm:4/5">
         <img src={blog?.imagePath} alt="Album" className="w-full h-full" />
       </figure>

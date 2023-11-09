@@ -22,7 +22,7 @@ const UpdateProfile = ({ setEdit, profileData }) => {
     const response = await updateProfile(info);
 
     if(response?.data?.acknowledged){
-      setEdit(false)
+      document.getElementById("update_modal").close()
     }
 
   };

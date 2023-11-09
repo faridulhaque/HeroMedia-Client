@@ -14,7 +14,7 @@ const DisplayComments = (comment) => {
         <div className="h-14 w-[50px]">
           <img
             className="w-full h-full rounded-full"
-            src="https://i.ibb.co/6YK1cXs/avatar.jpg"
+            src="https://res.cloudinary.com/dfmdacf6w/image/upload/v1699554373/hero-club/avatar-_dlv3ja.jpg"
             alt=""
           />
         </div>

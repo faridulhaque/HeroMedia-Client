@@ -15,8 +15,8 @@ const HomePage = () => {
   return (
     <>
       <Banner userEmail={user?.email}></Banner>
-      <Media userEmail= {user?.email}></Media>
       <CreateBlog userEmail={user?.email}></CreateBlog>
+      <Media userEmail= {user?.email}></Media>
       <Footer></Footer>
     </>
   );

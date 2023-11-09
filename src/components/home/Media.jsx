@@ -3,11 +3,13 @@ import MediaCard from "./MediaCard";
 import { useGetAllBlogsQuery } from "../../api/queries/blogPost";
 
 const Media = ({ userEmail }) => {
-  const { data: blogs } = useGetAllBlogsQuery();
+  const { data: blogs, isLoading } = useGetAllBlogsQuery();
 
   // const sortedBlogs = blogs.sort((a, b) => {
   //   return b.likes.length - a.likes.length;
   // });
+
+  if(isLoading) return <h2 className="text-md text-center text-teal-400">Your data is loading. Please wait!</h2>
 
   const sortedBlogs = blogs ? [...blogs].sort((a, b) => b?.likes?.length - a?.likes?.length) : [];
 

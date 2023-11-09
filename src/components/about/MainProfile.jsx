@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase.init";
+import UpdateModal from "../modals/UpdateModal";
 
 const MainProfile = ({ setEdit, profileData }) => {
   return (
@@ -8,7 +9,7 @@ const MainProfile = ({ setEdit, profileData }) => {
       <div className="w-full h-36 bg-[#222222] mb-20 relative">
         <img
           className="w-36 h-36 absolute left-5 top-[40%]"
-          src="https://i.ibb.co/6YK1cXs/avatar.jpg"
+          src="https://res.cloudinary.com/dfmdacf6w/image/upload/v1699554373/hero-club/avatar-_dlv3ja.jpg"
           width={150}
           height={150}
           alt="avatar"
@@ -70,12 +71,15 @@ const MainProfile = ({ setEdit, profileData }) => {
 
       <div className="w-11/12 mx-auto">
         <button
-          onClick={() => setEdit(true)}
+          // onClick={() => setEdit(true)}
+          onClick={()=>document.getElementById("update_modal").showModal()}
           className="w-full h-10 mt-5  bg-[#222222] hover:shadow-xl text-white"
         >
           Update Profile
         </button>
       </div>
+
+      <UpdateModal setEdit={setEdit} profileData={profileData}></UpdateModal>
     </div>
   );
 };

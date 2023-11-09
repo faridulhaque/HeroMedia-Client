@@ -8,7 +8,7 @@ const Banner = ({userEmail}) => {
       className="hero min-h-screen"
       style={{
         backgroundImage:
-          "url(https://i.ibb.co/s3T99Pg/top-view-desk-concept-with-coffee.jpg)",
+          "url(https://res.cloudinary.com/dfmdacf6w/image/upload/v1699553709/hero-club/file-1699465903938_m6van6.jpg)",
       }}
     >
       <Navbar userEmail={userEmail}></Navbar>

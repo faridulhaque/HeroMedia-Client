@@ -43,7 +43,7 @@ const BlogContainer = () => {
         <div className="lg:w-2/4 sm:w-4/5 shadow-md p-5 rounded-md bg-white mx-auto">
             <div className="flex">
                 <div className="h-12 w-12">
-                    <img className="h-full w-full rounded-full" src="https://i.ibb.co/6YK1cXs/avatar.jpg" alt="" />
+                    <img className="h-full w-full rounded-full" src="https://res.cloudinary.com/dfmdacf6w/image/upload/v1699554373/hero-club/avatar-_dlv3ja.jpg" alt="" />
                 </div>
 
                 <div className='ml-5'>
