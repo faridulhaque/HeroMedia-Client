@@ -10,7 +10,7 @@ const MediaPage = () => {
 
   const { data: blogs, isLoading } = useGetAllBlogsQuery();
 
-  if (isLoading) {
+  if (isLoading || loading) {
     <></>;
   }
 
@@ -25,6 +25,8 @@ const MediaPage = () => {
           {" "}
         </MediaFrame>
       ))}
+      <div className="h-20"></div>
+      {/* <Footer></Footer> */}
     </>
   );
 };

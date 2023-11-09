@@ -22,7 +22,7 @@ const BlogContainer = () => {
     
     const [likeUnlike, {isLoading}] = useLikeControlMutation()
 
-    if(isLoading || blogLoading) {
+    if(isLoading || blogLoading ||userLoading) {
         return <></>
     }
 

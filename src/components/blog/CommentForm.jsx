@@ -6,19 +6,22 @@ const CommentForm = ({ userEmail, postId }) => {
 
   const [saveComment, {isLoading}] = useSaveCommentMutation()
 
-  const makeComment = () => {
+  const makeComment = async () => {
     const data = {
         comment: comment,
         userEmail: userEmail,
         postId
     }
-    saveComment(data)
+    await saveComment(data)
+    document.getElementById("comment_form").value = "";
+    
 
   };
 
   return (
     <div className="w-full flex items-center my-4">
       <textarea
+      id="comment_form"
         onChange={(e) => setComment(e.target.value)}
         className="w-4/5 border-2 border-black h-16 resize-none rounded-md bg-white text-black"
         placeholder="Add a comment about this post"

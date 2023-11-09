@@ -3,7 +3,7 @@ import SignUP from "../entry/SignUP";
 import SignIN from "../entry/SignIN";
 
 const EntryDialog = () => {
-  const [registerPage, setRegisterPage] = useState(true);
+  const [registerPage, setRegisterPage] = useState(false);
 
   return (
     <dialog id="entry_modal" className="modal">

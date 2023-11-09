@@ -3,6 +3,7 @@ import App from "../App";
 import AboutPage from "../pages/AboutPage";
 import MediaPage from "../pages/MediaPage";
 import BlogPage from "../pages/BlogPage";
+import RequireAuth from "../Requirement/RequireAuth";
 
 const routers = createBrowserRouter([
     {
@@ -14,21 +15,27 @@ const routers = createBrowserRouter([
     {
         path: "/about",
         element: (
-            <AboutPage></AboutPage>
+            <RequireAuth>
+                <AboutPage></AboutPage>
+            </RequireAuth>
         ),
     },
     {
         path: "/media",
         element: (
-            <MediaPage></MediaPage>
+            <RequireAuth>
+                <MediaPage></MediaPage>
+            </RequireAuth>
         ),
     },
     {
         path: "/blog/:id",
         element: (
-            <BlogPage></BlogPage>
+            <RequireAuth>
+                <BlogPage></BlogPage>
+            </RequireAuth>
         )
     }
-    
+
 ])
 export default routers;
