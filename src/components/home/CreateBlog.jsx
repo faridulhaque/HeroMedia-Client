@@ -28,6 +28,8 @@ const CreateBlog = ({ userEmail }) => {
     const blog = e.target.blog.value;
     const date = new Date();
     const file = new FormData();
+    const likes = [];
+    const comments = [];
 
     file.append("file", imgFile);
     file.append("upload_preset", "heroclub");
@@ -39,6 +41,8 @@ const CreateBlog = ({ userEmail }) => {
         title,
         blog,
         date,
+        likes,
+        comments,
       });
       setLoading(false);
       window.location.reload()

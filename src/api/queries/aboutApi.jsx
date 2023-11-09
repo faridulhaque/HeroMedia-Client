@@ -2,6 +2,7 @@ import { apiSlice } from "../root/apiSlice";
 
 const aboutApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
+
     getUserProfile: builder.query({
       query: (email) => ({
         url: `/api/profile/me/${email}`,
@@ -9,6 +10,7 @@ const aboutApi = apiSlice.injectEndpoints({
       }),
       providesTags: ["profile"],
     }),
+
 
     updateUserProfile: builder.mutation({
       query: (data) => ({

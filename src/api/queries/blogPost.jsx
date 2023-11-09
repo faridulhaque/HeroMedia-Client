@@ -12,6 +12,48 @@ const blogPostApi = apiSlice.injectEndpoints({
         }),
       }),
 
+      saveComment: builder.mutation({
+        query: (data) => ({
+          url: "/api/blogPost/comment",
+          method: "POST",
+          body: data,
+        }),
+        invalidatesTags:['blog']
+      }),
+
+
+      getCommentatorProfile: builder.query({
+        query: (email) => {
+          const url = `/api/blogPost/commentator/${email}`;
+          const method = "GET";
+      
+      
+          return {
+            url,
+            method,
+          };
+        },
+        providesTags: ["profile"],
+      }),
+
+
+      getOneBlog : builder.query({
+        query: (id) => ({
+          url: `/api/blogPost/${id}`,
+          method: "GET",
+        }),
+        providesTags: ["blog"]
+      }),
+
+      likeControl : builder.mutation({
+        query: (data) => ({
+          url: `/api/blogPost/like/${data?.id}`,
+          method: "PUT",
+          body: data
+        }),
+        invalidatesTags:["blog"]
+      }),
+
 
       getAllBlogs: builder.query({
         query: () => ({
@@ -27,4 +69,4 @@ const blogPostApi = apiSlice.injectEndpoints({
   });
 
 
-export const {useSaveBlogPostMutation, useGetAllBlogsQuery} = blogPostApi; 
+export const {useSaveBlogPostMutation, useGetAllBlogsQuery, useGetOneBlogQuery, useLikeControlMutation, useSaveCommentMutation, useGetCommentatorProfileQuery} = blogPostApi; 
