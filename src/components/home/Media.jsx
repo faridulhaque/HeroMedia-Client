@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from "react";
 import MediaCard from "./MediaCard";
 import { useGetAllBlogsQuery } from "../../api/queries/blogPost";
+import Loading from "../shared/Loading";
 
 const Media = ({ userEmail }) => {
   const { data: blogs, isLoading } = useGetAllBlogsQuery();
@@ -9,8 +10,7 @@ const Media = ({ userEmail }) => {
   //   return b.likes.length - a.likes.length;
   // });
 
-  if(isLoading) return <h2 className="text-md text-center text-teal-400">Your data is loading. Please wait!</h2>
-
+  if(isLoading) return <Loading></Loading>
   const sortedBlogs = blogs ? [...blogs].sort((a, b) => b?.likes?.length - a?.likes?.length) : [];
 
   return (
