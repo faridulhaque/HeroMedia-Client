@@ -8,6 +8,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../firebase.init';
 import CommentForm from './CommentForm';
 import DisplayComments from './DisplayComments';
+import Loading from '../shared/Loading';
 
 const BlogContainer = () => {
 
@@ -23,7 +24,7 @@ const BlogContainer = () => {
     const [likeUnlike, {isLoading}] = useLikeControlMutation()
 
     if(isLoading || blogLoading ||userLoading) {
-        return <></>
+        return <Loading></Loading>
     }
 
     const likeControl = (id) =>{

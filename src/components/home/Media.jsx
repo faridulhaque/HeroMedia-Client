@@ -10,12 +10,19 @@ const Media = ({ userEmail }) => {
   //   return b.likes.length - a.likes.length;
   // });
 
-  if(isLoading) return <Loading></Loading>
+  if(isLoading) return <>
+    <Loading></Loading>
+    <br />
+  </>
   const sortedBlogs = blogs ? [...blogs].sort((a, b) => b?.likes?.length - a?.likes?.length) : [];
 
   return (
     <div id="blog" className="h-auto w-full m-auto bg-base-100 py-10">
       <h2 className="w-11/12 m-auto text-5xl text-[#7A283A] my-10">Top 3 For You</h2>
+      {
+        !sortedBlogs?.length && 
+    <h2 className="text-xl text-center">If data are not displayed, please refresh the page</h2>
+      }
       <div className="w-11/12 m-auto grid lg:grid-cols-3 sm:grid-cols-1 gap-10">
         {[...sortedBlogs.slice(0, 3)]?.map((blog) => (
           <MediaCard
