@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/HeroMedia/static/css/main.f5920e7a.css",
+    "main.js": "/HeroMedia/static/js/main.46d06961.js",
+    "static/js/787.d2b4c222.chunk.js": "/HeroMedia/static/js/787.d2b4c222.chunk.js",
+    "static/media/logo.svg": "/HeroMedia/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/HeroMedia/index.html",
+    "main.f5920e7a.css.map": "/HeroMedia/static/css/main.f5920e7a.css.map",
+    "main.46d06961.js.map": "/HeroMedia/static/js/main.46d06961.js.map",
+    "787.d2b4c222.chunk.js.map": "/HeroMedia/static/js/787.d2b4c222.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f5920e7a.css",
+    "static/js/main.46d06961.js"
+  ]
+}
